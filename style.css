@@ -10,6 +10,18 @@
   align-items: center;
   background-color: black;
 }
+#game {
+  position: relative;
+}
+#score-board {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 1vmin;
+  left: 1vmin;
+  font-size: 2.2vmin;
+  font-weight: 600;
+}
 #game-board {
   height: 100vmin;
   width: 100vmin;

@@ -21,6 +21,8 @@ class Game {
     this.#snake = new this.#Snake();
     this.#food = new this.#Food();
     this.#draw();
+    this.#updateScore();
+    this.#updateLevel();
     window.addEventListener(
       'keydown',
       (e) => {
@@ -50,6 +52,9 @@ class Game {
   get #isEnd() {
     return this.#snake.isDead;
   }
+  get #score() {
+    return this.#snake.body.length - 1;
+  }
   get #level() {
     return parseInt(this.#snake.body.length / 5);
   }
@@ -58,15 +63,27 @@ class Game {
     this.#snake.move();
     const levelBefore = this.#level;
     if (this.#snake.eat(this.#food)) {
+      this.#updateScore();
       this.#food.update(this.#snake.body);
       const levelAfter = this.#level;
-      if (levelBefore !== levelAfter) this.#gameSpeed += 0.6;
+      if (levelBefore !== levelAfter) {
+        this.#gameSpeed += 0.6;
+        this.#updateLevel();
+      }
     }
   }
   #draw() {
     this.#gameBoard.innerHTML = '';
     this.#snake.draw(this.#gameBoard);
     this.#food.draw(this.#gameBoard);
+  }
+  #updateScore() {
+    const scoreSpan = document.getElementById('score-span');
+    scoreSpan.innerText = `score: ${this.#score}`;
+  }
+  #updateLevel() {
+    const levelSpan = document.getElementById('level-span');
+    levelSpan.innerText = `level: ${this.#level}`;
   }
 }
 

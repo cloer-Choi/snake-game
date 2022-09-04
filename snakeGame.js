@@ -42,6 +42,7 @@ class Game {
     if (secondsSinceLastRender < 1 / this.#gameSpeed) return;
     this.#lastRenderTime = currentTime;
 
+    console.log('render');
     this.#update();
     this.#draw();
   }

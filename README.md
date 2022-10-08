@@ -2,4 +2,4 @@
 
 A simple snake game using VanillaJS
 
-[Github page](https://cloer-choi.github.io/snake-game/)
+[Github page](https://thecloer.github.io/snake-game/)
